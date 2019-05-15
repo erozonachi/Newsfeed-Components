@@ -13,6 +13,10 @@ class Article {
     
     // Set a click handler on the expandButton reference, calling the expandArticle method.
     this.expandButton.addEventListener(`click`, this.expandArticle);
+
+    // Article read button click event handler
+    this.readButton = this.domElement.querySelector(`.close`);
+    this.readButton.addEventListener(`click`, this.removeArticle);
     
   }
 
@@ -23,6 +27,13 @@ class Article {
       this.expandButton.textContent = buttonLabelHide :
       this.expandButton.textContent = buttonLabelExpand;
 
+  }
+
+  removeArticle = () => {
+    TweenMax.to(this.domElement, 2, {
+      x:-1536,
+    });
+    setTimeout(() => this.domElement.remove(), 2000);
   }
 }
 
