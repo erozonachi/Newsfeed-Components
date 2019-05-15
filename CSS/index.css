@@ -77,6 +77,10 @@
   height: 50px;
   overflow: hidden;
   box-shadow: 2px 2px 2px lightgrey;
+  -webkit-transition: height 2s;
+  -moz-transition: height 2s;
+  -o-transition: height 2s;
+  transition: height 2s;
 }
 .article h2 {
   font-size: 28px;

@@ -1,6 +1,6 @@
 // Because classes are not hoisted you will need to start your code at the bottom of the page.  Look for the comment "START HERE"
-const buttonLabelExpand = `expand`;
-const buttonLabelHide = `hide`;
+const buttonLabelExpand = `Click to Expand`;
+const buttonLabelHide = `Click to Close`;
 
 class Article {
   constructor(domElement) {
