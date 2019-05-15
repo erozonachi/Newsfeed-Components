@@ -1,8 +1,29 @@
 
-const toggleMenu = () => {
-  // Toggle the "menu--open" class on your menu reference. 
-  menu.classList.toggle(`menu--open`);
+const toggleMenu = (e) => {
+  // Toggle the "menu--open" class on your menu reference.
+  e.stopPropagation();
+  menu.classList.toggle(`open`);
+  if (menu.classList.contains(`open`)) {
+    TweenMax.to(menu, 2, {
+      x:350,
+    });
+  } else {
+    TweenMax.to(menu, 2, {
+      x:-350,
+    });
+  }
 }
+const menuItem = document.querySelectorAll(`.menu ul li`);
+document.body.addEventListener(`click`, (e) => {
+  if (e.target !== menu && !Array.from(menuItem).includes(e.target)) {
+    if (menu.classList.contains(`open`)) {
+      menu.classList.toggle(`open`);
+      TweenMax.to(menu, 2, {
+        x:-350,
+      });
+    }
+  }
+});
 
 // Start Here: Create a reference to the ".menu" class
 const menu = document.querySelector(`.menu`);
