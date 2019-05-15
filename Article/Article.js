@@ -30,10 +30,11 @@ class Article {
   }
 
   removeArticle = () => {
+    //
     TweenMax.to(this.domElement, 2, {
       x:-1536,
+      onComplete: () => this.domElement.remove(),
     });
-    setTimeout(() => this.domElement.remove(), 2000);
   }
 }
 
@@ -50,3 +51,51 @@ const articles = document.querySelectorAll(`.article`);
 articles.forEach(article => {
   new Article(article);
 });
+
+// Article component generator
+function articleGenerator(title, content) {
+  const component = document.createElement(`div`);
+  component.setAttribute(`class`, `article`);
+
+  const h2 = document.createElement(`h2`);
+  h2.appendChild(document.createTextNode(title))
+  component.append(h2);
+
+  const pDate = document.createElement(`p`);
+  pDate.setAttribute(`class`, `date`);
+  pDate.appendChild(document.createTextNode(formatDate(new Date())));
+  component.append(pDate);
+
+  const pContent = document.createElement(`p`);
+  pContent.appendChild(document.createTextNode(content));
+  component.append(pContent);
+
+  const expandBtn = document.createElement(`span`);
+  expandBtn.setAttribute(`class`, `expandButton`);
+  component.append(expandBtn);
+
+  const closeBtn = document.createElement(`button`);
+  closeBtn.setAttribute(`class`, `close`);
+  closeBtn.appendChild(document.createTextNode(`Read`));
+  component.append(closeBtn);
+
+  new Article(component);
+  document.querySelector(`.articles`).append(component);
+}
+
+articleGenerator(`My 2019 Birthday Bash`, `Product content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.Product content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.Product content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.Product content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.Product content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.Product content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.`);
+
+function formatDate(date) {
+  var monthNames = [
+    "Jan", "Feb", "Mar",
+    "Apr", "May", "Jun", "Jul",
+    "Aug", "Sep", "Oct",
+    "Nov", "Dec"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+  return `${monthNames[monthIndex]} ${day}, ${year}`;
+}
