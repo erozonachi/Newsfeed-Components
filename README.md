@@ -27,7 +27,7 @@ In this project we are going to be building a news feed reader. The goal is to h
 
 * [x] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo). **Please don't merge your own pull request**
 * [x] Add your project manager as a reviewer on the pull-request
-* [ ] Your project manager will count the project as complete by merging the branch back into master.
+* [x] Your project manager will count the project as complete by merging the branch back into master.
 
 ### Preprocessor Setup
 
